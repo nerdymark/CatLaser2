@@ -51,12 +51,10 @@
                         </div>
                     </div>
                     <h3>Laser</h3>
-                    <div id="calibrationStep">
-                        <p class="description"></p>
-                        <p>
-                            <button type="button" class="btn btn-default pull-left"></button>
-                            <button type="button" class="btn btn-default pull-right"></button>
-                        </p>
+                    <div id="lasercontrol">
+                        <div class="input-group">
+                            <button class="btn btn-default firelaser" type="button"><span class="glyphicons glyphicons-sun"></span> "Fire Laser"</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -118,31 +116,31 @@
                 // Use both the load event on the image, and a 1 second timeout as
                 // a fallback.  I found the fallback is necessary with Chrome 
                 // because it sometimes never fires the load event for an MJPEG image.
-                var video = $('#video img').first();
-                var videoLoad = $.Deferred();
-                window.setTimeout(function() {
-                    videoLoad.resolve();
-                }, 1000);
-                video.load(function() {
-                    videoLoad.resolve();
-                });
+                //var video = $('#video img').first();
+                //var videoLoad = $.Deferred();
+                //window.setTimeout(function() {
+                //    videoLoad.resolve();
+                //}, 1000);
+                //video.load(function() {
+                //    videoLoad.resolve();
+                //});
                 
                 // Wait for the video image to load, then setup calibration.
-                videoLoad.done(function() {
-                    calibration.setup('calibrateLayer', video.width(), video.height());
-                });
+                //videoLoad.done(function() {
+                //    calibration.setup('calibrateLayer', video.width(), video.height());
+                //});
 
                 // Send target commands based on click locations
-                $('#calibrateLayer').click(function(ev) {
-                    if (!calibration.isCalibrating()) {
-                        $.ajax({ 
-                            url: '/target/' + ev.offsetX + '/' + ev.offsetY, 
-                            type: 'PUT'
-                        }).done(function() {
-                            updateServos();
-                        });
-                    }
-                });
+                //$('#calibrateLayer').click(function(ev) {
+                //    if (!calibration.isCalibrating()) {
+                //       $.ajax({ 
+                //            url: '/target/' + ev.offsetX + '/' + ev.offsetY, 
+                //            type: 'PUT'
+                //        }).done(function() {
+                //            updateServos();
+                //        });
+                //    }
+                //});
             });
         </script>
     </body>
